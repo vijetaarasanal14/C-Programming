@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+// ---- Call by VALUE functions ----
+int add_value(int a, int b) {
+    return a + b;
+}
+
+int sub_value(int a, int b) {
+    return a - b;
+}
+
+int mul_value(int a, int b) {
+    return a * b;
+}
+
+float div_value(int a, int b) {
+    return (float)a / b;
+}
+
+// ---- Call by REFERENCE functions ----
+void add_ref(int a, int b, int *res) {
+    *res = a + b;
+}
+
+void sub_ref(int a, int b, int *res) {
+    *res = a - b;
+}
+
+void mul_ref(int a, int b, int *res) {
+    *res = a * b;
+}
+
+void div_ref(int a, int b, float *res) {
+    *res = (float)a / b;
+}
+
+int main() {
+    int a, b, choice, result;
+    float fresult;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    printf("\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n");
+    printf("Enter choice: ");
+    scanf("%d", &choice);
+
+    printf("\n--- Using Call by VALUE ---\n");
+    switch(choice) {
+        case 1: printf("Result = %d\n", add_value(a, b)); break;
+        case 2: printf("Result = %d\n", sub_value(a, b)); break;
+        case 3: printf("Result = %d\n", mul_value(a, b)); break;
+        case 4: printf("Result = %.2f\n", div_value(a, b)); break;
+        default: printf("Invalid choice\n");
+    }
+
+    printf("\n--- Using Call by REFERENCE ---\n");
+    switch(choice) {
+        case 1: add_ref(a, b, &result); printf("Result = %d\n", result); break;
+        case 2: sub_ref(a, b, &result); printf("Result = %d\n", result); break;
+        case 3: mul_ref(a, b, &result); printf("Result = %d\n", result); break;
+        case 4: div_ref(a, b, &fresult); printf("Result = %.2f\n", fresult); break;
+        default: printf("Invalid choice\n");
+    }
+
+    return 0;
+}
